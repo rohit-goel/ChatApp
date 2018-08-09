@@ -1,8 +1,19 @@
 <div class="sidebar">
+    <input  type="search" placeholder="search channel" />
+    <h4>Channels</h4>
+    <p><input type="text" class="control" [(ngModel)]="addchannel" placeholder="add channel" >
+        <button type="button" (click)="channels()" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+        </button>
+    </p>
 </div>
-<div class= "header">
+<div class="header">
+    <span id="phone" class="fa fa-phone"></span>
+    <i class="material-icons"></i>
 
+    <input type="text" class="form-control" placeholder="Search" name="search">
 </div>
 <div class="main">
-
+    <input type="text" class="message" [(ngModel)]="messagetext" placeholder="Enter the message" name="Masseage">
+    <button type="button" class="fa fa-telegram" (click)="sendmessage()" ></button>
 </div>

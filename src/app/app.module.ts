@@ -5,12 +5,15 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider,
 } from "angular-6-social-login";
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ChathomepageComponent } from './chathomepage/chathomepage.component'
 import { HittingapiService } from './hittingapi.service';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+
 
 export function getAuthServiceConfigs() {
   let configuration = new AuthServiceConfig(
@@ -50,6 +53,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     SocialLoginModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [HittingapiService,

@@ -3,6 +3,7 @@ import {
   AuthService,  GoogleLoginProvider
 } from 'angular-6-social-login';
 import { Router } from '@angular/router';
+import { HittingapiService } from '../hittingapi.service';
 
 
 
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private socialAuthService: AuthService, private routes:Router) { }
+  constructor(private socialAuthService: AuthService, private routes:Router,private service:HittingapiService) { }
   ngOnInit() {
   }
 
@@ -26,9 +27,12 @@ export class LoginComponent implements OnInit {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        
+        var serve = this.service.getData();
+        serve.subscribe(data=>console.log(data));
+        this.routes.navigate(['homepage']);
       }
     );
+    
   }
 
 }
