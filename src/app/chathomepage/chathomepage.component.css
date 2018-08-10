@@ -14,12 +14,13 @@
     height: 10%;
     left: 20%;
     top: 0%;
+    overflow: auto;
     position: absolute;
 }
 
 .main{
     width:80%;
-    height: 90%;
+    height: 80%;
     left: 20%;
     top: 10%;
     position: absolute;
@@ -60,14 +61,11 @@ button{
     margin-left: 600px;
     margin-top: 2%;
 }
-.fa{
-    width: 20px;
-}
+
 
 .message{
-    margin-top: 50%;
     width: 90%;
-    margin-left: 20px;
+    margin-left: 1%;
 }
 
 .inputtext{
@@ -88,8 +86,58 @@ button{
     margin-top: -60px;
 }
 
-.fa-telegram{
+.fa-paper-plane-o{
+    font-size: 25px;
     margin-left: 10px;
+    margin-top: 20px;
     width: 30px;
     height: 30px;
+}
+
+.fa-bell{
+    color: white;
+    height: 30px;
+    width: 30px;
+}
+
+.footer{
+    width: 80%;
+    height: 10%;
+    left: 20%;
+    top: 90%;
+    background-color: rosybrown;;
+    position: absolute;
+}
+
+.search{
+    width: 20%;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.glyphicon-exclamation-sign{
+    margin-left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.glyphicon-cog{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.glyphicon-star-empty{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.glyphicon-option-vertical{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.glyphicon-bell{
+    margin-left: 80%;
+    font-size: 20px;
 }

@@ -52,8 +52,9 @@ export class ChathomepageComponent implements OnInit {
   messagelist = [];
   showMessages() {
     this.service.showmessage().subscribe(res => {
-      length = res.sendmessage.length;
-      for (let index = 0; index < length; index++) {
+      let len = res.sendmsg.length;
+      console.log(len)
+      for (let index = 0; index < res.sendmsg.length; index++) {
         this.messagelist[index] = res.sendmessage[index].body;
       }
     },

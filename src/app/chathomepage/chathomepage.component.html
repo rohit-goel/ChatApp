@@ -1,25 +1,38 @@
 <div class="sidebar">
-  <input type="search" placeholder="search channel" />
+
+  <h3>Rohit Goel</h3>
+  <i class="glyphicon glyphicon-bell"></i>
   <h4>All Channels</h4>
+
   <p>
     <input type="text" class="control" [(ngModel)]="addchannel" placeholder="add channel">
+
     <button type="button" (click)="channels()" class="btn btn-default btn-sm">
       <span class="glyphicon glyphicon-plus-sign"></span>
     </button>
+
   </p>
   <ul *ngFor="let channel of channelarray">
-      <li>{{channel}}
+    <li>{{channel}}
   </ul>
 </div>
 <div class="header">
   <span id="phone" class="fa fa-phone"></span>
   <i class="material-icons"></i>
+  <i class="glyphicon glyphicon-exclamation-sign" title="Its a chat appllication betweeh the user in a channel"></i>
 
+  <i class="glyphicon glyphicon-cog"></i>
+  <input type="text" class="search" name="search" placeholder="search">
+  <i class="glyphicon glyphicon-star-empty"></i>
+  <i class="glyphicon glyphicon-option-vertical"></i>
 </div>
 <div class="main">
   <ul *ngFor="let message of messagelist">
     <li>{{message}}</li>
   </ul>
+
+</div>
+<div class="footer">
   <input type="text" class="message" [(ngModel)]="messagetext" placeholder="Enter the message" name="Masseage">
-  <button type="button" class="fa fa-telegram" (click)="sendmessage()"></button>
+  <i class="fa fa-paper-plane-o" (click)="sendmessage()"></i>
 </div>

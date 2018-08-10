@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       (userData) => {
         var serve = this.service.getData();
         serve.subscribe(data=>console.log(data));
-        this.routes.navigate(['homepage']);
+        this.routes.navigate(['/homepage']);
       }
     );
     
