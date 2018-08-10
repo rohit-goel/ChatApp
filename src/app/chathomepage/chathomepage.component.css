@@ -6,6 +6,7 @@
     position: absolute;
     color: white;
     background-color: #4A394B;
+    overflow: auto;
 }
 
 .header{
@@ -22,6 +23,8 @@
     left: 20%;
     top: 10%;
     position: absolute;
+    background-color: lightblue;
+    overflow: auto;
 }
 
 input{

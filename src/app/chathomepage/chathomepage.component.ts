@@ -23,7 +23,7 @@ export class ChathomepageComponent implements OnInit {
     this.service.getChannel(this.addchannel).subscribe(res => {
       console.log(res);
       console.log("Channel created");
-      this.groupObject
+      this.groupObject = res.unique_name;
     },
       err => {
         console.log(err);
@@ -32,13 +32,13 @@ export class ChathomepageComponent implements OnInit {
   channelarray = [];
   displaychannellist() {
     this.service.displaychannel().subscribe(res => {
-      var len = res.channels.length;
-      for (let indexnumber = 0; indexnumber < len; indexnumber++) {
+      var length = res.channels.length;
+      for (let indexnumber = 0; indexnumber < length; indexnumber++) {
         this.channelarray[indexnumber] = res.channels[indexnumber].unique_name;
       }
     },
-      err => {
-        console.log(err);
+      error => {
+        console.log(error);
       })
   }
 
@@ -47,5 +47,18 @@ export class ChathomepageComponent implements OnInit {
       this.msggrp = res.body;
       console.log(this.msggrp);
     })
+  }
+
+  messagelist = [];
+  showMessages() {
+    this.service.showmessage().subscribe(res => {
+      length = res.sendmessage.length;
+      for (let index = 0; index < length; index++) {
+        this.messagelist[index] = res.sendmessage[index].body;
+      }
+    },
+      error => {
+        console.log(error);
+      })
   }
 }

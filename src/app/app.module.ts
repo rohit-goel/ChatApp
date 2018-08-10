@@ -57,7 +57,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [HittingapiService,
+  providers: [
+    HittingapiService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
