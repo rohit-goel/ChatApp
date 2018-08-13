@@ -21,7 +21,7 @@ export class ChathomepageComponent implements OnInit {
   arrayLen;
   ngOnInit() {
     this.displaychannellist();
-    this.showmessage();
+    
   }
 
   channels() {
@@ -29,18 +29,16 @@ export class ChathomepageComponent implements OnInit {
       console.log(res);
       console.log("Channel created");
       this.groupObject = res.unique_name;
+      this.displaychannellist();
     },
       err => {
         console.log(err);
       });
   }
-  channelarray = [];
+  channelarray;
   displaychannellist() {
     this.service.displaychannel().subscribe(res => {
-      var length = res.channels.length;
-      for (let indexnumber = 0; indexnumber < length; indexnumber++) {
-        this.channelarray[indexnumber] = res.channels[indexnumber].unique_name;
-      }
+      this.channelarray=res.channels;
     },
       error => {
         console.log(error);
@@ -82,9 +80,9 @@ export class ChathomepageComponent implements OnInit {
 
 
   sendmessage(){
-    this.service.sendmessage(this.messagetext).subscribe(res=>{
-      console.log(this.messagetext);
-      this.showmessage();
+    this.service.sendmessage(this.messagetext,this.url).subscribe(res=>{
+      console.log(res)
+      this.show(this.url)
     },
   err=>{
     console.log(err);
@@ -93,9 +91,10 @@ export class ChathomepageComponent implements OnInit {
   }
 
   allMessages=[];
-
-  showmessage(){
-    this.service.showMessages().subscribe(res=>{
+  url;
+  show(url){
+    this.url=url;
+    this.service.showMessages(url).subscribe(res=>{
       this.allMessages=res.messages;
       console.log(this.allMessages);
       var totalMessages= res.messages.length;
@@ -108,7 +107,7 @@ export class ChathomepageComponent implements OnInit {
       console.log(err);
     })
   }
-
+  
   logout() {
     this.routes.navigate(['home']);
   }

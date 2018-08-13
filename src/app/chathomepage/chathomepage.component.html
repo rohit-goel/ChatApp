@@ -18,9 +18,11 @@
     </button>
   </p>
   <ul *ngFor="let channel of channelarray">
-    <li>{{channel}}
+    <li (click)="show(channel.links.messages)">{{channel.unique_name}}
   </ul>
 </div>
+
+
 <div class="header">
   <span id="phone" class="fa fa-phone"></span>
   <i class="material-icons"></i>

@@ -13,9 +13,7 @@ export class HittingapiService {
   serviceid: string = "IS59328796da90478a9b6933c90a981f87";
   mychannelid:string="CH05314576978b4f7c8fa6f71aca404630";
   identity:string=localStorage.getItem("Identity");
-  
   channel: string = "https://chat.twilio.com/v2/Services/IS59328796da90478a9b6933c90a981f87/Channels"
-
   message: string = "https://chat.twilio.com/v2/Services/IS59328796da90478a9b6933c90a981f87/Channels/CH05314576978b4f7c8fa6f71aca404630/Messages"
   constructor(private http: HttpClient) {
 
@@ -36,11 +34,11 @@ export class HittingapiService {
   joinchannel(channelId):Observable<any>{
     return this.http.post(this.channel+"/"+channelId+"/Members","ChannelSid="+channelId+"&Identity="+this.identity+"&ServiceSid="+this.serviceid,httpoptions); 
   }
-  sendmessage(messagetext):Observable<any>{
-    return this.http.post(this.channel+"/"+this.mychannelid+"/Messages","ChannelSid="+this.mychannelid+"&ServiceSid="+this.serviceid+"&Body="+messagetext+"&From="+this.identity,httpoptions); 
+  sendmessage(messagetext,sendurl):Observable<any>{
+    return this.http.post(sendurl,"ChannelSid="+this.mychannelid+"&ServiceSid="+this.serviceid+"&Body="+messagetext+"&From="+this.identity,httpoptions); 
   }
-  showMessages():Observable<any>{
-    return this.http.get(this.channel+"/"+this.mychannelid+"/Messages",httpoptions).pipe(map(data=>data));
+  showMessages(messageurl):Observable<any>{
+    return this.http.get(messageurl,httpoptions).pipe(map(data=>data));
   }
 }
 const httpoptions = {
