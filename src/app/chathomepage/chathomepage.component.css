@@ -81,10 +81,7 @@ h4{
     width: 85%;
 }
 
-button{
-    margin-left: 87%;
-    margin-top: -60px;
-}
+
 
 .fa-paper-plane-o{
     font-size: 25px;
@@ -138,6 +135,25 @@ button{
 }
 
 .glyphicon-bell{
-    margin-left: 80%;
+    margin-left: 50%;
+    margin-top: 5px;
     font-size: 20px;
+}
+
+.searchannel {
+    width: 85%;
+    height: 30px;
+}
+
+.fa-search{
+    font-size: 25px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+button{
+    font-size: 15px;
+    margin-left: 0px;
+    color: black;
 }

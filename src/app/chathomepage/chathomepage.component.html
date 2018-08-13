@@ -1,16 +1,21 @@
 <div class="sidebar">
 
-  <h3>Rohit Goel</h3>
-  <i class="glyphicon glyphicon-bell"></i>
+  <p>Rohit Goel
+    <i class="glyphicon glyphicon-bell"></i>
+  </p>
+  <input type="text" class="searchannel" placeholder="Search channel" [(ngModel)]="channel">
+  <span class="fa fa-search" (click)="searchchannel()"></span>
+  <br />
+  <br />
+  <p>{{foundchannel}}
+    <button type="button" class="join" (click)="joinchannel()">Join</button>
+  </p>
   <h4>All Channels</h4>
-
   <p>
-    <input type="text" class="control" [(ngModel)]="addchannel" placeholder="add channel">
-
+    <input type="text" class="control" [(ngModel)]="addchannel" placeholder="Add channel">
     <button type="button" (click)="channels()" class="btn btn-default btn-sm">
-      <span class="glyphicon glyphicon-plus-sign"></span>
+      <span class="glyphicon glyphicon-plus-sign" (click)="channels()"></span>
     </button>
-
   </p>
   <ul *ngFor="let channel of channelarray">
     <li>{{channel}}
@@ -20,17 +25,15 @@
   <span id="phone" class="fa fa-phone"></span>
   <i class="material-icons"></i>
   <i class="glyphicon glyphicon-exclamation-sign" title="Its a chat appllication betweeh the user in a channel"></i>
-
   <i class="glyphicon glyphicon-cog"></i>
   <input type="text" class="search" name="search" placeholder="search">
   <i class="glyphicon glyphicon-star-empty"></i>
-  <i class="glyphicon glyphicon-option-vertical"></i>
+  <i class="glyphicon glyphicon-option-vertical" (click)="logout()"></i>
 </div>
 <div class="main">
-  <ul *ngFor="let message of messagelist">
-    <li>{{message}}</li>
+  <ul *ngFor="let message of allMessages">
+    <span>{{message}}</span>
   </ul>
-
 </div>
 <div class="footer">
   <input type="text" class="message" [(ngModel)]="messagetext" placeholder="Enter the message" name="Masseage">

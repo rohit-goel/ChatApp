@@ -8,15 +8,20 @@ import { Router } from '../../../node_modules/@angular/router';
   styleUrls: ['./chathomepage.component.css']
 })
 export class ChathomepageComponent implements OnInit {
+  messageArray: any;
 
   constructor(private routes: Router, private service: HittingapiService) { }
   public addchannel = "";
-  public messagetext = "";
+  public messagetext :string;
   groupObject;
-  msggrp;
+  channel:string="";
+  foundchannel="";
+  channelArray:any=[];
+  foundChannelId="";
+  arrayLen;
   ngOnInit() {
     this.displaychannellist();
-
+    this.showmessage();
   }
 
   channels() {
@@ -42,24 +47,69 @@ export class ChathomepageComponent implements OnInit {
       })
   }
 
-  sendmessage() {
-    this.service.entermessage(this.messagetext).subscribe(res => {
-      this.msggrp = res.body;
-      console.log(this.msggrp);
+  searchchannel(){
+    this.service.searchchannel().subscribe(res=>{
+      for(let index=0;index<res.channels.length;index++){
+           this.channelarray.push(res.channels[index].unique_name)
+       this.arrayLen=this.channelarray.length;
+      for(let index=0;index<this.arrayLen;index++){
+        if(this.channelarray[index]==this.channel)
+        {
+          console.log("channel found");
+          this.foundchannel=this.channel;
+          this.foundChannelId=res.channels[index].sid;
+          break;
+        }
+        else{
+        this.foundchannel="channel not found";
+        }
+      }
+    }
+    },
+  err=>{
+    console.log();
+  })
+  }
+
+  joinchannel(){
+    this.service.joinchannel(this.foundChannelId).subscribe(res=>{
+      console.log(res);
+    },err=>{
+      console.log(err);
     })
   }
 
-  messagelist = [];
-  showMessages() {
-    this.service.showmessage().subscribe(res => {
-      let len = res.sendmsg.length;
-      console.log(len)
-      for (let index = 0; index < res.sendmsg.length; index++) {
-        this.messagelist[index] = res.sendmessage[index].body;
+
+
+  sendmessage(){
+    this.service.sendmessage(this.messagetext).subscribe(res=>{
+      console.log(this.messagetext);
+      this.showmessage();
+    },
+  err=>{
+    console.log(err);
+  })
+  // console.log("abc");
+  }
+
+  allMessages=[];
+
+  showmessage(){
+    this.service.showMessages().subscribe(res=>{
+      this.allMessages=res.messages;
+      console.log(this.allMessages);
+      var totalMessages= res.messages.length;
+      for(let index=0;index<totalMessages;index++)
+      {
+        this.allMessages[index] = res.messages[index].body;
       }
     },
-      error => {
-        console.log(error);
-      })
+    err=>{
+      console.log(err);
+    })
+  }
+
+  logout() {
+    this.routes.navigate(['home']);
   }
 }
