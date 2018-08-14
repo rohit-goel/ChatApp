@@ -19,6 +19,7 @@ export class ChathomepageComponent implements OnInit {
   channelArray:any=[];
   foundChannelId="";
   arrayLen;
+  public email = localStorage.getItem("emailid");
   ngOnInit() {
     this.displaychannellist();
     
@@ -85,6 +86,7 @@ export class ChathomepageComponent implements OnInit {
 
   allMessages=[];
   url;
+  title="";
   show(url){
     this.url=url;
     this.service.showMessages(url).subscribe(res=>{

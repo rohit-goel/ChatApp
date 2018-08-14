@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         var serve = this.service.getData();
+        localStorage.setItem("username",userData.name)
+        localStorage.setItem("emailid",userData.email);
         serve.subscribe(data=>console.log(data));
         this.routes.navigate(['/homepage']);
       }

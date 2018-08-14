@@ -14,7 +14,6 @@ export class HittingapiService {
   mychannelid:string="CH05314576978b4f7c8fa6f71aca404630";
   identity:string=localStorage.getItem("Identity");
   channel: string = "https://chat.twilio.com/v2/Services/IS59328796da90478a9b6933c90a981f87/Channels"
-  message: string = "https://chat.twilio.com/v2/Services/IS59328796da90478a9b6933c90a981f87/Channels/CH05314576978b4f7c8fa6f71aca404630/Messages"
   constructor(private http: HttpClient) {
 
   }

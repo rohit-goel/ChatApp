@@ -24,6 +24,8 @@
 
 
 <div class="header">
+  <span [(ngModel)]="title">{{title}}</span>
+  
   <span id="phone" class="fa fa-phone"></span>
   <i class="material-icons"></i>
   <i class="glyphicon glyphicon-exclamation-sign" title="Its a chat appllication betweeh the user in a channel"></i>
@@ -34,9 +36,10 @@
 </div>
 <div class="main">
   <ul>
-  <li *ngFor="let messages of allMessages" style="margin: 15px" [ngClass]='{"sender":(messages.from==email),"reciever":(messages.from!=email)}'>
-    {{messages.from}}
+  <li *ngFor="let messages of allMessages" style="margin: 15px" [ngClass]='{"sender":(email==email),"reciever":(email!=email)}'>
+    {{email}}{{messages.from}}<br />
     {{messages}}
+  </li>
   </ul>
 </div>
 <div class="footer">

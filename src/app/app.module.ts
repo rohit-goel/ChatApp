@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { ChathomepageComponent } from './chathomepage/chathomepage.component'
 import { HittingapiService } from './hittingapi.service';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 export function getAuthServiceConfigs() {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: LoginComponent
+  },
+  {
+    path:'**',
+    component : PagenotfoundComponent
   }
 ]
 
@@ -48,7 +53,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    ChathomepageComponent
+    ChathomepageComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
