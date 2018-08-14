@@ -102,6 +102,7 @@ export class ChathomepageComponent implements OnInit {
   }
   
   logout() {
+    localStorage.clear();
     this.routes.navigate(['home']);
   }
 }
