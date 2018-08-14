@@ -47,30 +47,23 @@ export class ChathomepageComponent implements OnInit {
 
   searchchannel(){
     this.service.searchchannel().subscribe(res=>{
-      for(let index=0;index<res.channels.length;index++){
-           this.channelarray.push(res.channels[index].unique_name)
-       this.arrayLen=this.channelarray.length;
-      for(let index=0;index<this.arrayLen;index++){
-        if(this.channelarray[index]==this.channel)
-        {
-          console.log("channel found");
-          this.foundchannel=this.channel;
-          this.foundChannelId=res.channels[index].sid;
-          break;
+      console.log(res.channels)
+      res.channels.forEach(element => {
+        if(element.unique_name == this.channel){
+          this.foundchannel =element.unique_name;
         }
-        else{
-        this.foundchannel="channel not found";
-        }
+      });
+      if(this.channel ==''){
+        this.foundchannel="Channel Not Found"
       }
     }
-    },
-  err=>{
-    console.log();
-  })
+      )
   }
 
+  
+
   joinchannel(){
-    this.service.joinchannel(this.foundChannelId).subscribe(res=>{
+    this.service.joinchannel(this.foundchannel).subscribe(res=>{
       console.log(res);
     },err=>{
       console.log(err);

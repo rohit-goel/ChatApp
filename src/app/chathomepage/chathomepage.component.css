@@ -24,7 +24,7 @@
     left: 20%;
     top: 10%;
     position: absolute;
-    background-color: lightblue;
+    background-color: wheat;
     overflow: auto;
 }
 
@@ -157,3 +157,22 @@ button{
     margin-left: 0px;
     color: black;
 }
+.receiver{
+ 
+    background-color: lightcoral;
+    float: left; 
+    overflow: hidden;
+    width: 50%;
+    padding: 10px;
+  }
+  .sender{
+    background-color:lightgreen;
+    float:right;
+    width:50%;
+    overflow: hidden;
+    padding: 10px;
+  }
+  #username{
+    color: antiquewhite;
+    margin-left: 10px;
+  }

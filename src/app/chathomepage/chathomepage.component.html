@@ -33,8 +33,10 @@
   <i class="glyphicon glyphicon-option-vertical" (click)="logout()"></i>
 </div>
 <div class="main">
-  <ul *ngFor="let message of allMessages">
-    <span>{{message}}</span>
+  <ul>
+  <li *ngFor="let messages of allMessages" style="margin: 15px" [ngClass]='{"sender":(messages.from==email),"reciever":(messages.from!=email)}'>
+    {{messages.from}}
+    {{messages}}
   </ul>
 </div>
 <div class="footer">
